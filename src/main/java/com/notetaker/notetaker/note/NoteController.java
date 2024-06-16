@@ -1,10 +1,11 @@
 package com.notetaker.notetaker.note;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.*;
 
 @RestController
@@ -20,5 +21,21 @@ public class NoteController {
     public ResponseEntity<List<Note>> findAll() {
         List<Note> notes = service.findAll();
         return ResponseEntity.ok().body(notes);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Note> find(@PathVariable("id")Long id) {
+        Optional<Note> note = service.find(id);
+        return ResponseEntity.of(note);
+    }
+
+    @PostMapping
+    public ResponseEntity<Note> create(@Valid @RequestBody Note note) {
+        Note created = service.create(note);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(created.getId())
+                .toUri();
+        return ResponseEntity.created(location).body(created);
     }
 }
