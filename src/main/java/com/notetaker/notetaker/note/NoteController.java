@@ -38,4 +38,10 @@ public class NoteController {
                 .toUri();
         return ResponseEntity.created(location).body(created);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@PathVariable("id") Long id) {
+        service.delete(id);
+        return ResponseEntity.ok("Note was successfully removed");
+    }
 }
