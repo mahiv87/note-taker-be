@@ -39,6 +39,22 @@ public class NoteController {
         return ResponseEntity.created(location).body(created);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Note> update(@PathVariable("id") Long id, @Valid @RequestBody Note updatedNote) {
+        Optional<Note> updated = service.update(id, updatedNote);
+
+        return updated
+                .map(value -> ResponseEntity.ok().body(value))
+                .orElseGet(() -> {
+                    Note created = service.create(updatedNote);
+                    URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                            .path("/{id}")
+                            .buildAndExpand(created.getId())
+                            .toUri();
+                    return ResponseEntity.created(location).body(created);
+                });
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable("id") Long id) {
         service.delete(id);
