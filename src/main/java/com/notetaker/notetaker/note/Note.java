@@ -12,4 +12,24 @@ public class Note {
         this.title = title;
         this.text = text;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public Note updateWith(Note note) {
+        return new Note(
+                this.id,
+                note.title,
+                note.text
+        );
+    }
 }
