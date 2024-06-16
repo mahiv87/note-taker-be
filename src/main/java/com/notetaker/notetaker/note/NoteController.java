@@ -1,6 +1,7 @@
 package com.notetaker.notetaker.note;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,7 @@ public class NoteController {
         this.service = service;
     }
 
+    @GetMapping
     public ResponseEntity<List<Note>> findAll() {
         List<Note> notes = service.findAll();
         return ResponseEntity.ok().body(notes);
