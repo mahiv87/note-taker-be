@@ -50,7 +50,7 @@ public class Note {
         return "Note{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", text='" + text + '\'' +
+                ", text='" + text +
                 '}';
     }
 }
