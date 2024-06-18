@@ -2,11 +2,11 @@ package com.notetaker.notetaker.note;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "note")
 public class Note {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private final Long id;
