@@ -9,15 +9,18 @@ public class Note {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private final Long id;
+    private Long id;
 
     @Column(name = "title")
     @NotNull(message = "title is required")
-    private final String title;
+    private String title;
 
     @Column(name = "text")
     @NotNull(message = "text is required")
-    private final String text;
+    private String text;
+
+    protected Note() {
+    }
 
     public Note(Long id, String title, String text) {
         this.id = id;
