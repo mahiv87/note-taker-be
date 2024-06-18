@@ -9,7 +9,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:3001")
+@CrossOrigin(origins = "https://note-taker-be-l43b.onrender.com/")
 @RestController
 @RequestMapping("api/notes")
 public class NoteController {
