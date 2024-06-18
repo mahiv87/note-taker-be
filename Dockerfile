@@ -1,4 +1,4 @@
-FROM gradle:jdk-21-and-22 AS build
+FROM gradle:jdk-21-and-22
 WORKDIR /app
 
 COPY gradlew /app/
