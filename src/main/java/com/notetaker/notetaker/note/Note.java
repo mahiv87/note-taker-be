@@ -1,16 +1,26 @@
 package com.notetaker.notetaker.note;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import org.springframework.data.annotation.Id;
 
+@Entity
+@Table(name = "note")
 public class Note {
-    private final Long id;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(name = "title")
     @NotNull(message = "title is required")
-    private final String title;
+    private String title;
 
+    @Column(name = "text")
     @NotNull(message = "text is required")
-    private final String text;
+    private String text;
+
+    protected Note() {
+    }
 
     public Note(Long id, String title, String text) {
         this.id = id;
@@ -18,7 +28,6 @@ public class Note {
         this.text = text;
     }
 
-    @Id
     public Long getId() {
         return id;
     }
@@ -37,5 +46,14 @@ public class Note {
                 note.title,
                 note.text
         );
+    }
+
+    @Override
+    public String toString() {
+        return "Note{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", text='" + text +
+                '}';
     }
 }

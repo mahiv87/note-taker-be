@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3001")
 @RestController
 @RequestMapping("api/notes")
 public class NoteController {
@@ -24,7 +26,7 @@ public class NoteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Note> find(@PathVariable("id")Long id) {
+    public ResponseEntity<Note> find(@PathVariable("id") Long id) {
         Optional<Note> note = service.find(id);
         return ResponseEntity.of(note);
     }
@@ -61,3 +63,4 @@ public class NoteController {
         return ResponseEntity.ok("Note was successfully removed");
     }
 }
+
