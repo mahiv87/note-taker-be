@@ -1,6 +1,9 @@
 # Use an official OpenJDK 22 runtime as a parent image
 FROM openjdk:22-jdk
 
+# Install xargs (part of findutils)
+RUN apt-get update && apt-get install -y findutils
+
 # Set the working directory in the container
 WORKDIR /app
 
@@ -17,7 +20,7 @@ COPY src /app/src
 # Grant execute permission to the Gradle wrapper
 RUN chmod +x gradlew
 
-# Run the Gradle build to resolve dependencies
+# Run the Gradle build to resolve dependencies and build the project
 RUN ./gradlew build --no-daemon
 
 # Expose port 8080 to the outside world
