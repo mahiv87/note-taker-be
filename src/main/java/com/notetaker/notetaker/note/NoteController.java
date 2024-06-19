@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "https://note-taker-be-l43b.onrender.com")
 @RestController
-@RequestMapping("api/notes")
+@RequestMapping("/api/notes")
 public class NoteController {
     private final NoteService service;
 
