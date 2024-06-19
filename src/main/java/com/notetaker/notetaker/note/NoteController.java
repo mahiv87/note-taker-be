@@ -1,6 +1,7 @@
 package com.notetaker.notetaker.note;
 
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -9,12 +10,13 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "https://note-taker-be-l43b.onrender.com")
+//@CrossOrigin(origins = "https://note-taker-be-l43b.onrender.com")
 @RestController
-@RequestMapping("/api/notes")
+@RequestMapping("api/notes")
 public class NoteController {
     private final NoteService service;
 
+    @Autowired
     public NoteController(NoteService service) {
         this.service = service;
     }

@@ -28,7 +28,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.data:spring-data-keyvalue'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	compileOnly 'org.projectlombok:lombok'
+//	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -38,3 +38,12 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+jar {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+bootJar {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
